@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>381</string>
+	<string>409.2</string>
 	<key>AMApplicationVersion</key>
-	<string>2.4</string>
+	<string>2.5</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input}	set theString0 to replace_chars(input as string, ":", "/")	set theArray to theSplit(theString0, "/")	set newArray to items 2 thru -1 of theArray	set testString to "/" &amp; my joinList(newArray, "/")	set thePath0 to replace_chars(testString, "(", "\"(\"")	set theFile to replace_chars(thePath0, ")", "\")\"")	set thePath2 to replace_chars(testString, "(", "_")	set thePath3 to replace_chars(thePath2, ")", "")	set newFile to replace_chars(thePath3, " ", "")	tell application "Terminal"		activate		do script with command "ShortName=`echo " &amp; theFile &amp; " | sed -e 's/ //g' -e 's/(/_/g' -e 's/)//g'`;cp \"" &amp; testString &amp; "\" \"$ShortName\";. ~/root/bin/thisroot.sh; root -l \"" &amp; newFile &amp; "\""	end tellend runon replace_chars(this_text, search_string, replacement_string)	set AppleScript's text item delimiters to the search_string	set the item_list to every text item of this_text	set AppleScript's text item delimiters to the replacement_string	set this_text to the item_list as string	set AppleScript's text item delimiters to ""	return this_textend replace_charson theSplit(theString, theDelimiter)	-- save delimiters to restore old settings	set oldDelimiters to AppleScript's text item delimiters	-- set delimiters to delimiter to be used	set AppleScript's text item delimiters to theDelimiter	-- create the array	set theArray to every text item of theString	-- restore the old setting	set AppleScript's text item delimiters to oldDelimiters	-- return the result	return theArrayend theSplitto joinList(aList, delimiter)	set retVal to ""	set prevDelimiter to AppleScript's text item delimiters	set AppleScript's text item delimiters to delimiter	set retVal to aList as string	set AppleScript's text item delimiters to prevDelimiter	return retValend joinList</string>
+					<string>on run {input}	if input is {} then	tell application "Terminal"		activate				do script with command ". ~/ROOT6/root/bin/thisroot.sh"	end tell	else	set theString0 to replace_chars(input as string, ":", "/")	set theArray to theSplit(theString0, "/")	set newArray to items 2 thru -1 of theArray	set testString to "/" &amp; my joinList(newArray, "/")	set thePath0 to replace_chars(testString, "(", "\"(\"")	set theFile to replace_chars(thePath0, ")", "\")\"")	set thePath2 to replace_chars(testString, "(", "_")	set thePath3 to replace_chars(thePath2, ")", "")	set newFile to replace_chars(thePath3, " ", "")	tell application "Terminal"		activate		do script with command "ShortName=`echo " &amp; theFile &amp; " | sed -e 's/ //g' -e 's/(/_/g' -e 's/)//g'`;cp \"" &amp; testString &amp; "\" \"$ShortName\";. ~/ROOT6/root/bin/thisroot.sh; root -l \"" &amp; newFile &amp; "\""	end tell	end ifend runon replace_chars(this_text, search_string, replacement_string)	set AppleScript's text item delimiters to the search_string	set the item_list to every text item of this_text	set AppleScript's text item delimiters to the replacement_string	set this_text to the item_list as string	set AppleScript's text item delimiters to ""	return this_textend replace_charson theSplit(theString, theDelimiter)	-- save delimiters to restore old settings	set oldDelimiters to AppleScript's text item delimiters	-- set delimiters to delimiter to be used	set AppleScript's text item delimiters to theDelimiter	-- create the array	set theArray to every text item of theString	-- restore the old setting	set AppleScript's text item delimiters to oldDelimiters	-- return the result	return theArrayend theSplitto joinList(aList, delimiter)	set retVal to ""	set prevDelimiter to AppleScript's text item delimiters	set AppleScript's text item delimiters to delimiter	set retVal to aList as string	set AppleScript's text item delimiters to prevDelimiter	return retValend joinList</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -105,9 +105,9 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>416.000000:513.000000</string>
+				<string>449.000000:316.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/English.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
